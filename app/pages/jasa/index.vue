@@ -1,19 +1,20 @@
 <template>
   <main class="min-h-screen bg-white text-zinc-900 antialiased dark:bg-black dark:text-zinc-50">
-    <section class="mx-auto max-w-4xl px-6 pt-24 pb-16 text-center md:pt-32">
+    <section ref="heroSection" class="hero-shell relative mx-auto max-w-4xl px-6 pt-24 pb-16 text-center md:pt-32">
+      <div class="hero-ambient pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-72 w-72 rounded-full bg-zinc-200/60 blur-3xl dark:bg-zinc-800/50"></div>
       <div class="space-y-4">
-        <span class="inline-flex items-center rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium tracking-tight text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+        <span ref="badgeRef" class="inline-flex items-center rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium tracking-tight text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
           Layanan & Solusi
         </span>
-        <h1 class="text-4xl font-normal tracking-tighter sm:text-5xl md:text-6xl text-black dark:text-white">
+        <h1 ref="titleRef" class="text-4xl font-normal tracking-tighter sm:text-5xl md:text-6xl text-black dark:text-white">
           Rakit platform digital berkinerja tinggi.
         </h1>
-        <p class="mx-auto max-w-2xl text-base text-zinc-500 sm:text-lg dark:text-zinc-400">
+        <p ref="descRef" class="mx-auto max-w-2xl text-base text-zinc-500 sm:text-lg dark:text-zinc-400">
           Kami merancang sistem web ultra-cepat, responsif, dan dioptimalkan secara mendalam demi kenyamanan pengguna serta konversi bisnis yang maksimal.
         </p>
-        <div class="pt-4">
+        <div ref="ctaRef" class="pt-4">
           <a 
-            href="#order-form"
+            href="#pilih-layanan"
             class="inline-flex h-10 items-center justify-center rounded-md bg-zinc-950 px-6 text-sm font-medium text-white shadow transition-colors duration-200 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
           >
             Mulai Proyek Anda
@@ -22,7 +23,7 @@
       </div>
     </section>
 
-    <section class="mx-auto max-w-5xl px-6 py-12">
+    <section class="mx-auto max-w-5xl px-6 py-12" id="pilih-layanan">
       <div class="mb-12 border-b border-zinc-200 pb-6 dark:border-zinc-800">
         <h2 class="text-2xl font-medium tracking-tight text-black dark:text-white">Pilihan Layanan</h2>
         <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Arsitektur modern yang disesuaikan dengan skala kebutuhan Anda.</p>
@@ -52,9 +53,11 @@
           <div>
             <div class="flex items-center justify-between">
               <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">0{{ service.id }} / {{ service.category }}</span>
-              
-              <NuxtLink :to="service.link" class="text-xs font-medium text-zinc-400 transition-colors duration-200 hover:text-black dark:hover:text-white underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700">
-                Lihat Selengkapnya &rarr;
+              <NuxtLink :to="service.link" class="service-link group relative inline-flex text-xs font-medium text-zinc-400 transition-colors duration-200 hover:text-black dark:hover:text-white">
+                <span>Lihat Selengkapnya &rarr;</span>
+                <span class="service-link__line absolute -bottom-1 left-0 h-px w-full overflow-hidden bg-zinc-200 dark:bg-zinc-800">
+                  <span class="service-link__sweep absolute inset-y-0 right-0 w-1/2 bg-zinc-500 dark:bg-zinc-400"></span>
+                </span>
               </NuxtLink>
             </div>
             
@@ -71,7 +74,7 @@
           </div>
           
           <div class="pt-8 border-t border-zinc-100 dark:border-zinc-900 mt-8">
-            <span class="text-xs text-zinc-400 dark:text-zinc-500 block">Estimasi Pengerjaan</span>
+            <span class="text-xs text-zinc-400 dark:text-zinc-500 block">Estimasi Pengerjaan dasar</span>
             <span class="text-sm font-medium text-zinc-900 dark:text-zinc-100">{{ service.timeline }}</span>
           </div>
         </article>
@@ -164,8 +167,104 @@
   </main>
 </template>
 
+<style scoped>
+.hero-shell {
+  overflow: hidden;
+}
+
+.hero-ambient {
+  animation: pulseGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.75;
+  }
+}
+
+.service-link {
+  position: relative;
+}
+
+.service-link__line {
+  display: block;
+}
+
+.service-link__sweep {
+  display: block;
+  animation: none;
+}
+
+.service-link:hover .service-link__sweep {
+  animation: line-sweep 1.8s ease-in-out infinite;
+}
+
+@keyframes line-sweep {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+</style>
+
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
+import gsap from 'gsap'
+
+const heroSection = ref<HTMLElement | null>(null)
+const badgeRef = ref<HTMLElement | null>(null)
+const titleRef = ref<HTMLElement | null>(null)
+const descRef = ref<HTMLElement | null>(null)
+const ctaRef = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+  tl.set([badgeRef.value, titleRef.value, descRef.value, ctaRef.value], {
+    opacity: 0,
+    y: 32,
+    filter: 'blur(10px)'
+  })
+
+  tl.to(heroSection.value, {
+    opacity: 1,
+    duration: 0.2
+  })
+  tl.to(badgeRef.value, {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    duration: 0.7
+  })
+  tl.to(titleRef.value, {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    duration: 0.9
+  }, '-=0.35')
+  tl.to(descRef.value, {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    duration: 0.8
+  }, '-=0.45')
+  tl.to(ctaRef.value, {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    duration: 0.7
+  }, '-=0.35')
+})
 
 useSeoMeta({
   title: 'Jasa Pembuatan Website Modern - RakitWeb',

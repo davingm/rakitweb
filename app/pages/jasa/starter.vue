@@ -1,22 +1,14 @@
 <template>
   <main class="min-h-screen bg-white text-zinc-900 antialiased dark:bg-black dark:text-zinc-50">
-    <nav class="mx-auto max-w-5xl px-6 pt-12">
-      <NuxtLink 
-        to="/jasa" 
-        class="inline-flex items-center gap-2 text-xs font-medium text-zinc-400 transition-colors duration-200 hover:text-black dark:hover:text-white"
-      >
-        <span class="text-sm">&larr;</span> Kembali ke Pilihan Layanan
-      </NuxtLink>
-    </nav>
-
     <section class="mx-auto max-w-5xl px-6 pt-12 pb-20">
       <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
         
         <div class="space-y-6 lg:col-span-5">
           <div class="flex items-center gap-3">
-            <span class="font-mono text-xs text-zinc-400 dark:text-zinc-500">LAYANAN 01 / STATIS</span>
-            <span class="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400">
+            <span class="font-mono text-zinc-400 dark:text-zinc-500">Layana Statis</span>
+            <span class="group relative inline-flex items-center gap-1.5 overflow-hidden rounded-full border border-emerald-400/30 bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold tracking-tight text-emerald-700 shadow-[0_0_16px_-5px_rgba(16,185,129,.8)] dark:bg-emerald-950/40 dark:text-emerald-400">
               Ultra Fast
+              <span class="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-white/50 blur-sm animate-[ultra-shine_3s_ease-in-out_infinite]"></span>
             </span>
           </div>
           
@@ -30,7 +22,7 @@
           
           <div class="flex items-center gap-3 pt-2">
             <NuxtLink 
-              to="/jasa#order-form"
+              to="#pilih-opsi"
               class="inline-flex h-10 items-center justify-center rounded-full bg-zinc-950 px-6 text-sm font-medium text-white shadow transition-colors duration-200 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
             >
               Mulai Proyek
@@ -40,7 +32,7 @@
               target="_blank"
               class="inline-flex h-10 items-center justify-center rounded-full border border-zinc-200 px-6 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
             >
-              Lihat Contoh
+              Kontak Seles
             </a>
           </div>
         </div>
@@ -125,7 +117,6 @@
           ]"
         >
           <div>
-            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">CAPABILITY // 0{{ index + 1 }}</span>
             <h3 class="mt-4 text-lg font-medium text-black dark:text-white">{{ feature.title }}</h3>
             <p class="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
               {{ feature.desc }}
@@ -212,20 +203,23 @@
               <p class="mt-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-xl">
                 Sempurna untuk profil korporasi, landing page pemasaran, atau portofolio profesional yang membutuhkan optimasi <span class="text-emerald-500 font-medium">Core Web Vitals</span> sempurna tanpa celah downtime.
               </p>
-              
-              <div class="mt-8 flex flex-wrap items-center gap-3">
-                <NuxtLink to="/jasa#order-form" class="inline-flex h-10 items-center justify-center rounded-full bg-zinc-900 px-6 text-sm font-medium text-white shadow transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200">
-                  Kirim Proposal / Brief
-                </NuxtLink>
-                <a
-                  href="https://wa.me/628123456789?text=Halo%20Rakitweb%2C%0A%0ASaya%20tertarik%20untuk%20menggunakan%20layanan%20pembuatan%20website%20Starter.%20Saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20website%2C%20fitur%20yang%20tersedia%2C%20estimasi%20biaya%2C%20serta%20proses%20pengerjaannya.%0A%0AMohon%20informasi%20lebih%20lanjut.%20Terima%20kasih."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex h-10 items-center justify-center rounded-full border border-zinc-200 px-6 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
-                >
-                  Konsultasi WhatsApp
-                </a>
-              </div>
+                <div class="mt-8 flex flex-wrap items-center gap-3">
+                  <a
+                    href="mailto:go@rakitweb.site?subject=Proposal%20Website%20Rakitweb&body=Halo%20Rakitweb%2C%0A%0ASaya%20tertarik%20untuk%20menggunakan%20layanan%20pembuatan%20website.%0A%0ANama%3A%20%0AKebutuhan%20website%3A%20%0AEstimasi%20budget%3A%20%0A%0ATerima%20kasih."
+                    class="inline-flex h-10 items-center justify-center rounded-full bg-zinc-900 px-6 text-sm font-medium text-white shadow transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+                  >
+                    Kirim Proposal / Brief
+                  </a>
+
+                  <a
+                    href="https://wa.me/628123456789?text=Halo%20Rakitweb%2C%0A%0ASaya%20tertarik%20untuk%20menggunakan%20layanan%20pembuatan%20website%20Starter.%20Saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20website%2C%20fitur%20yang%20tersedia%2C%20estimasi%20biaya%2C%20serta%20proses%20pengerjaannya.%0A%0AMohon%20informasi%20lebih%20lanjut.%0A%0ATerima%20kasih."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex h-10 items-center justify-center rounded-full border border-zinc-200 px-6 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
+                  >
+                    Konsultasi WhatsApp
+                  </a>
+                </div>
             </div>
     
             <div class="p-8 border-t md:border-t-0 md:border-l border-zinc-200 dark:border-zinc-800 bg-white dark:bg-black flex flex-col justify-between">

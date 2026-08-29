@@ -98,6 +98,25 @@ const openMenu = (menu: string) => {
   })
 }
 
+const closeMenuNow = () => {
+  clearTimeout(closeTimeout)
+  hoverState.value.opacity = 0
+
+  if (dropdownEl.value) {
+    gsap.to(dropdownEl.value, {
+      opacity: 0,
+      y: -4,
+      duration: 0.12,
+      ease: 'power2.in',
+      onComplete: () => {
+        activeMenu.value = null
+      }
+    })
+  } else {
+    activeMenu.value = null
+  }
+}
+
 const scheduleClose = () => {
   closeTimeout = setTimeout(() => {
     if (dropdownEl.value) {
@@ -283,6 +302,7 @@ onUnmounted(() => {
       v-if="activeMenu"
       ref="dropdownEl"
       class="absolute left-0 right-0 top-full bg-white dark:bg-[#000000] border-b border-zinc-250 dark:border-zinc-800 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.06)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]"
+      @click="closeMenuNow"
       @mouseenter="cancelClose"
       @mouseleave="scheduleClose"
     >
