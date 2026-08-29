@@ -32,7 +32,7 @@
               target="_blank"
               class="inline-flex h-10 items-center justify-center rounded-full border border-zinc-200 px-6 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900/50"
             >
-              Lihat Contoh
+              Kontak Seles
             </a>
           </div>
         </div>
