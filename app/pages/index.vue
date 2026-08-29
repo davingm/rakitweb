@@ -33,13 +33,6 @@ const impactStats = [
 const companies = [
   {
     type: 'image',
-    src: 'https://www.vectorlogo.zone/logos/google/google-ar21.svg',
-    alt: 'Google',
-    imgSize: 'h-14 md:h-20',
-    invert: false,
-  },
-  {
-    type: 'image',
     src: '/company/Vuxi.png',
     alt: 'Vuxi',
     imgSize: 'h-10 md:h-14',
@@ -53,10 +46,10 @@ const companies = [
     invert: false,
   },
   {
-    type: 'text',
-    text: 'NLFTs',
+    type: 'image',
+    src: 'https://github.com/nlfts.png',
     alt: 'NLFTs',
-    imgSize: '',
+    imgSize: 'h-10 md:h-14',
     invert: false,
   },
   {
@@ -297,9 +290,6 @@ onUnmounted(() => {
         </div>
       </div>
     </section>
-
-    <!-- IMPACT STATS SECTION -->
-    <ImpactStats :stats="impactStats" />
 
     <!-- PROFILE SECTION -->
     <ProfileSection />
