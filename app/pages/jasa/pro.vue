@@ -16,16 +16,12 @@
           </p>
           
           <div class="flex flex-wrap items-center gap-3 pt-2">
-            <button class="inline-flex h-11 items-center gap-2 rounded-full bg-zinc-950 dark:bg-white px-5 text-sm font-medium text-white dark:text-black transition-colors duration-200 hover:bg-zinc-800 dark:hover:bg-zinc-200">
+            <a href="#mulai" class="inline-flex h-11 items-center gap-2 rounded-full bg-zinc-950 dark:bg-white px-5 text-sm font-medium text-white dark:text-black transition-colors duration-200 hover:bg-zinc-800 dark:hover:bg-zinc-200">
               <svg class="h-3 w-3 fill-current" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="50,15 90,85 10,85" />
               </svg>
               <span>Mulai Keberangkatan</span>
-            </button>
-
-            <button class="inline-flex h-11 items-center rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0A0A0A] px-5 text-sm font-medium text-zinc-900 dark:text-white transition-colors duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-900">
-              Lihat Demo
-            </button>
+            </a>
           </div>
         </div>
 

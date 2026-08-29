@@ -114,7 +114,7 @@ function buildWhatsAppLink(item: AddOn): string {
 </script>
 
 <template>
-  <section class="bg-white dark:bg-black py-24 px-6 transition-colors duration-300">
+  <section class="bg-white dark:bg-black py-24 px-6 transition-colors duration-300" id="mulai">
     <div class="mx-auto max-w-6xl">
       <!-- Heading -->
       <div class="text-center mb-14">
